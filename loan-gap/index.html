@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>2026 Grad Loan Funding-Gap Calculator · Grad-IQ</title>
+<meta name="description" content="See how much you can borrow in federal grad loans under the July 1, 2026 caps and how big your remaining funding gap is.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/gradiq.css">
+</head>
+<body data-root=".." >
+<main id="main" class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Budget &amp; money · Tool 3</p>
+    <h1>2026 grad loan funding-gap calculator</h1>
+    <p class="lede">New federal loan caps started July 1, 2026. Enter your costs and aid to see the most you could borrow federally this year and what gap is left.</p>
+  </div>
+  <div class="notice warn" role="note">
+    <p><strong>Rules as of 2026 — verify with your financial aid office.</strong> Caps below come from the <a href="https://www.ets.org/grad-school-journey/student-loan-changes-2026.html" target="_blank" rel="noopener">ETS summary of the 2026 federal student-loan changes</a> (which links to Federal Student Aid sources). Parts of the new rules are in litigation. Your school sets your cost of attendance and final loan amounts.</p>
+  </div>
+  <div id="gq-toolbar"></div>
+
+  <section class="card lav" aria-labelledby="caps-h">
+    <h2 id="caps-h">The 2026 caps (from July 1, 2026)</h2>
+    <ul>
+      <li><strong>Grad PLUS is closed to new borrowers.</strong></li>
+      <li>Master's and non-clinical PhD students: <strong>$20,500 a year</strong> and <strong>$100,000</strong> total graduate borrowing.</li>
+      <li>Professional-degree students: $50,000 a year and $200,000 total.</li>
+      <li><strong>$257,500 lifetime cap</strong> across all federal student loans (undergrad + grad). Grad PLUS loans count toward it.</li>
+    </ul>
+    <p class="source">Sources: web research file (ETS/FSA summary); the Grad PLUS lifetime-limit point also appears in the Reddit scan (<a href="https://www.reddit.com/r/GradSchool/comments/1szyoyc/grad_plus_loans_will_count_toward_257500_lifetime/" target="_blank" rel="noopener">r/GradSchool thread</a>).</p>
+  </section>
+
+  <section class="card" aria-labelledby="in-h">
+    <h2 id="in-h">Your year</h2>
+    <label class="field">Program type
+      <select data-bind="program"><option value="grad">Master's or non-clinical PhD ($20,500/yr, $100,000 total)</option><option value="prof">Professional degree ($50,000/yr, $200,000 total)</option></select></label>
+    <div class="field-row">
+      <label class="field">Cost of attendance (this year)<span class="hint">From your school's aid offer: tuition, fees, housing, food, etc.</span><span class="money"><input type="number" inputmode="decimal" min="0" placeholder="0" data-bind="coa"></span></label>
+      <label class="field">Stipend (this year)<span class="money"><input type="number" inputmode="decimal" min="0" placeholder="0" data-bind="stipend"></span></label>
+      <label class="field">Other aid<span class="hint">Tuition waiver value, grants, fellowships, scholarships, employer aid.</span><span class="money"><input type="number" inputmode="decimal" min="0" placeholder="0" data-bind="otherAid"></span></label>
+    </div>
+    <div class="field-row">
+      <label class="field">Prior federal <em>graduate</em> borrowing<span class="hint">Include any Grad PLUS.</span><span class="money"><input type="number" inputmode="decimal" min="0" placeholder="0" data-bind="priorGrad"></span></label>
+      <label class="field">Prior federal <em>undergraduate</em> borrowing<span class="money"><input type="number" inputmode="decimal" min="0" placeholder="0" data-bind="priorUg"></span></label>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="out-h">
+    <h2 id="out-h">Result</h2>
+    <div class="stat-grid" id="stats"></div>
+    <h3 style="margin-top:1.2rem">How the limit was found</h3>
+    <div class="table-scroll"><table class="data" id="limits"></table></div>
+    <div id="gapnote" style="margin-top:1rem"></div>
+  </section>
+
+  <section class="card soft" aria-labelledby="ideas-h">
+    <h2 id="ideas-h">If there's a gap</h2>
+    <p>What commenters on the Reddit thread <a href="https://www.reddit.com/r/GradSchool/comments/1tjlmvl/how_do_people_afford_grad_school/" target="_blank" rel="noopener">"How do people afford grad school?"</a> suggested: look for a TA/RA position, employer tuition reimbursement or school scholarships, and remember PhDs should generally be funded.</p>
+    <label class="field">My notes / questions for the aid office<textarea data-bind="notes" placeholder="Ask about: assistantships, fellowships, a cost-of-attendance adjustment, payment plans…"></textarea></label>
+    <p class="small no-print">Next: plan the monthly side in the <a href="../stipend-budget/">stipend budget</a>, or check <a href="../basic-needs/">basic-needs &amp; benefits</a>.</p>
+  </section>
+</main>
+<script src="../config.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

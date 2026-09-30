@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>$1,000 Emergency Fund Builder · Grad-IQ</title>
+<meta name="description" content="Build a $1,000 emergency fund with a recurring auto-save, a projected finish date, a deposit log and a progress ring.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/gradiq.css">
+</head>
+<body data-root=".." >
+<main id="main" class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Budget &amp; money · Tool 5</p>
+    <h1>$1,000 emergency fund builder</h1>
+    <p class="lede">A small cushion goes a long way. In Inside Higher Ed's 2025 Student Voice survey, <strong>36% of students</strong> said an unexpected expense of $1,000 or less could threaten their enrollment.</p>
+    <p class="source">Source: <a href="https://www.insidehighered.com/news/student-success/academic-life/2025/10/07/students-struggle-surprise-costs-dont-know-about-help" target="_blank" rel="noopener">Inside Higher Ed, Oct 7, 2025</a> (n=5,065), via Grad-IQ web research.</p>
+  </div>
+  <div id="gq-toolbar"></div>
+
+  <div class="grid two">
+    <section class="card" aria-labelledby="prog-h">
+      <h2 id="prog-h">Progress</h2>
+      <div class="ring-wrap" id="ring" role="img" aria-label="Progress"></div>
+      <div class="stat-grid" id="stats" style="margin-top:1rem;grid-template-columns:1fr 1fr"></div>
+    </section>
+    <section class="card" aria-labelledby="plan-h">
+      <h2 id="plan-h">Your plan</h2>
+      <div class="field-row">
+        <label class="field">Goal<span class="money"><input type="number" inputmode="decimal" min="1" data-bind="goal"></span></label>
+        <label class="field">Already saved (starting balance)<span class="money"><input type="number" inputmode="decimal" min="0" placeholder="0" data-bind="start"></span></label>
+      </div>
+      <div class="field-row">
+        <label class="field">Auto-save amount<span class="money"><input type="number" inputmode="decimal" min="0" placeholder="e.g. 25" data-bind="auto"></span></label>
+        <label class="field">How often<select data-bind="freq"><option value="weekly">Weekly</option><option value="biweekly">Every 2 weeks</option><option value="monthly">Monthly</option></select></label>
+        <label class="field">Next auto-save date<input type="date" data-bind="nextDate"></label>
+      </div>
+      <div id="projection"></div>
+    </section>
+  </div>
+
+  <section class="card" aria-labelledby="log-h">
+    <h2 id="log-h">Deposit log</h2>
+    <form id="depform" class="row-line no-print" style="--cols: 1fr 1fr 2fr auto" onsubmit="return false">
+      <label class="field">Date<input type="date" id="d-date"></label>
+      <label class="field">Amount<span class="money"><input type="number" inputmode="decimal" id="d-amt" step="0.01" placeholder="0"></span></label>
+      <label class="field">Note<input type="text" id="d-note" placeholder="Auto-save, tax refund, gift… (use a negative amount for a withdrawal)"></label>
+      <button type="submit" class="btn primary" data-action="addDep">Add</button>
+    </form>
+    <div class="table-scroll"><table class="data" id="deps"></table></div>
+  </section>
+</main>
+<script src="../config.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

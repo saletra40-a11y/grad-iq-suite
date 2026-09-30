@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dissertation & Defense Countdown · Grad-IQ</title>
+<meta name="description" content="Enter your defense date to get a days-left countdown, back-planned milestones and a defense-prep checklist.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/gradiq.css">
+</head>
+<body data-root=".." >
+<main id="main" class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Study &amp; time · Tool 9</p>
+    <h1>Dissertation &amp; defense countdown</h1>
+    <p class="lede">Set your defense date and Grad-IQ works backward: draft to committee, revisions, slides, practice talks and paperwork, all with editable dates.</p>
+  </div>
+  <div id="gq-toolbar"></div>
+
+  <div class="grid two">
+    <section class="card" aria-labelledby="set-h">
+      <h2 id="set-h">Your defense</h2>
+      <label class="field">Dissertation / thesis title<input type="text" data-bind="title" placeholder="Working title"></label>
+      <div class="field-row">
+        <label class="field">Defense date<input type="date" data-bind="defenseDate" data-rerender></label>
+        <label class="field">Time &amp; room / link<input type="text" data-bind="where" placeholder="e.g. 2pm, Room 210 + Zoom"></label>
+      </div>
+      <p class="small muted">Suggested lead times are starting points only. Your graduate school's and committee's rules and deadlines come first, so edit any date.</p>
+    </section>
+    <section class="card lav countdown" aria-live="polite" id="countdown"></section>
+  </div>
+
+  <section class="card" aria-labelledby="ms-h">
+    <div class="card-head"><h2 id="ms-h">Back-planned milestones</h2><div class="btn-row no-print"><button type="button" class="btn sm" data-action="replan">Reset dates from defense date</button><button type="button" class="btn sm" data-action="addMs">+ Milestone</button></div></div>
+    <div class="rows" id="milestones"></div>
+  </section>
+
+  <section class="card" aria-labelledby="ck-h">
+    <div class="card-head"><h2 id="ck-h">Defense-prep checklist</h2><span class="pill lav" id="ckprog"></span></div>
+    <div class="rows" id="checklist"></div>
+    <form class="row-line no-print" style="--cols: 1fr auto;margin-top:.7rem" onsubmit="return false"><label class="field">Add an item<input type="text" id="ck-new" placeholder="e.g. Book a room for the reception"></label><button type="submit" class="btn" data-action="addCk">Add</button></form>
+  </section>
+
+  <section class="card soft" aria-labelledby="calm-h">
+    <h2 id="calm-h">A steadying fact</h2>
+    <p>On Academia Stack Exchange, the accepted answer to <a href="https://academia.stackexchange.com/questions/41639" target="_blank" rel="noopener">"How would one fail a master thesis defense?"</a> says outright failure is rare once your advisor has approved scheduling the defense. A "major revisions" outcome is more typical. And if you hate your dissertation right now, you're in good company (<a href="https://www.reddit.com/r/GradSchool/comments/1s9vx6e/im_presuming_its_normal_to_basically_hate_your/" target="_blank" rel="noopener">r/GradSchool</a>).</p>
+    <p class="small no-print">Planning the whole degree? Use the <a href="../milestones/">grad milestones planner</a>. Need regalia for commencement? Try the <a href="../regalia-calculator/">regalia calculator</a>.</p>
+  </section>
+</main>
+<script src="../config.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

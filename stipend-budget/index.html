@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stipend Budget Planner · Grad-IQ</title>
+<meta name="description" content="Plan your monthly grad stipend: needs, wants and savings with a live remaining balance and a one-page printable budget.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/gradiq.css">
+</head>
+<body data-root="..">
+<main id="main" class="wrap">
+  <div class="page-head screen-only">
+    <p class="eyebrow">Budget &amp; money · Tool 1</p>
+    <h1>Stipend budget planner</h1>
+    <p class="lede">Give every stipend dollar a job. Split spending into needs, wants and savings and watch what's left update as you type.</p>
+  </div>
+  <div id="gq-toolbar"></div>
+
+  <section class="print-only print-sheet" id="print-summary" aria-hidden="true"></section>
+
+  <div class="screen-only">
+  <section class="card" aria-labelledby="inc-h">
+    <h2 id="inc-h">Money in this month</h2>
+    <div class="field-row">
+      <label class="field">Month<input type="month" data-bind="month"></label>
+      <label class="field">Monthly stipend (take-home)<span class="money"><input type="number" inputmode="decimal" min="0" step="0.01" data-bind="stipend" placeholder="0"></span></label>
+      <label class="field">Other income<span class="hint">Side work, partner contribution, aid refund…</span><span class="money"><input type="number" inputmode="decimal" min="0" step="0.01" data-bind="other" placeholder="0"></span></label>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="sum-h">
+    <h2 id="sum-h">Where it stands</h2>
+    <div class="stat-grid" id="stats"></div>
+    <div id="mixbars" style="margin-top:1rem"></div>
+  </section>
+
+  <section class="card" aria-labelledby="cat-h">
+    <div class="card-head"><h2 id="cat-h">Categories</h2>
+      <div class="btn-row no-print">
+        <button type="button" class="btn sm" data-action="add" data-type="need">+ Need</button>
+        <button type="button" class="btn sm" data-action="add" data-type="want">+ Want</button>
+        <button type="button" class="btn sm" data-action="add" data-type="save">+ Savings</button>
+      </div></div>
+    <p class="muted small">Needs keep you housed, fed, healthy and enrolled. Wants make life good. Savings protect future-you. Rename, re-type or delete any row.</p>
+    <div id="groups"></div>
+  </section>
+
+  <section class="card soft" aria-labelledby="notes-h">
+    <h2 id="notes-h">Notes for this month</h2>
+    <label class="field"><span class="sr-only">Notes</span><textarea data-bind="notes" placeholder="Irregular expenses coming up, conference travel, reimbursements you're waiting on…"></textarea></label>
+    <p class="small muted no-print">Related: <a href="../stipend-tax/">Stipend tax worksheet</a> (for your tax set-aside line) · <a href="../emergency-fund/">$1,000 emergency fund builder</a></p>
+  </section>
+  </div>
+</main>
+<script src="../config.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

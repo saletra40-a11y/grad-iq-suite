@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deep-Work Block Planner · Grad-IQ</title>
+<meta name="description" content="Plan 3 to 4 focused hours a day in your best hours, in a weekly grid with done tracking.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/gradiq.css">
+</head>
+<body data-root=".." >
+<main id="main" class="wrap wide">
+  <div class="page-head">
+    <p class="eyebrow">Study &amp; time · Tool 8</p>
+    <h1>Deep-work block planner</h1>
+    <p class="lede">You don't need 10-hour days. Grad students on Reddit agree that <strong>3–4 hours of real deep work a day</strong> is normal and sustainable: put writing in your best hours and do admin and light reading the rest of the day.</p>
+    <p class="source">Sources: <a href="https://www.reddit.com/r/AskAcademia/comments/1tgxquv/is_anyone_else_physically_unable_to_do_more_than/" target="_blank" rel="noopener">r/AskAcademia deep-work thread</a> (comment consensus); <a href="https://academia.stackexchange.com/questions/64440" target="_blank" rel="noopener">Academia Stack Exchange Q64440</a> (accepted answer: long days aren't needed, and productivity drops with longer hours).</p>
+  </div>
+  <div id="gq-toolbar"></div>
+
+  <section class="card" aria-labelledby="set-h">
+    <h2 id="set-h">Your best hours</h2>
+    <div class="field-row">
+      <label class="field">Week starting (Monday)<input type="date" data-bind="weekOf" data-rerender></label>
+      <label class="field">Best hours start<input type="time" data-bind="bestStart"></label>
+      <label class="field">Daily deep-work goal (hours)<input type="number" min="0.5" max="8" step="0.5" data-bind="goalHours"></label>
+      <label class="field">Block length (minutes)<select data-bind="blockMin"><option value="45">45</option><option value="60">60</option><option value="90">90</option><option value="120">120</option></select></label>
+      <label class="field">Break between blocks (min)<input type="number" min="0" max="120" step="5" data-bind="breakMin"></label>
+    </div>
+    <fieldset style="border:0;padding:0;margin:0 0 .8rem"><legend class="field" style="margin:0 0 .3rem">Plan these days</legend><div class="btn-row" id="daypick"></div></fieldset>
+    <div class="btn-row no-print"><button type="button" class="btn primary" data-action="autoplan">Auto-plan my week</button><button type="button" class="btn secondary" data-action="nextWeek">Start next week (keep plan, clear ticks)</button></div>
+    <p class="small muted" style="margin-top:.6rem">Auto-plan replaces this week's blocks with blocks in your best hours. You can edit, add or delete any block after.</p>
+  </section>
+
+  <section class="card soft" aria-labelledby="sum-h">
+    <h2 id="sum-h" class="sr-only">This week</h2>
+    <div class="stat-grid" id="stats"></div>
+  </section>
+
+  <section aria-labelledby="grid-h">
+    <h2 id="grid-h">Weekly grid</h2>
+    <div class="week-grid" id="grid"></div>
+  </section>
+  <section class="card soft" style="margin-top:1rem" aria-labelledby="n-h"><h2 id="n-h">Rest-of-day list (admin, email, light reading)</h2><label class="field"><span class="sr-only">Admin list</span><textarea data-bind="adminNotes" placeholder="Things that don't need your best brain…"></textarea></label></section>
+</main>
+<script src="../config.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

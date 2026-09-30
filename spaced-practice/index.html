@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spaced-Practice Study Calendar · Grad-IQ</title>
+<meta name="description" content="Add topics, auto-schedule spaced reviews, see what's due today and log self-quizzes with a confidence rating.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/gradiq.css">
+</head>
+<body data-root=".." >
+<main id="main" class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Study &amp; time · Tool 7</p>
+    <h1>Spaced-practice study calendar</h1>
+    <p class="lede">Rereading feels productive but isn't. Practice testing (quizzing yourself) and distributed practice (spacing reviews out) are the two techniques rated "high utility" in a major review of study methods.</p>
+    <p class="source">Source: <a href="https://journals.sagepub.com/doi/abs/10.1177/1529100612453266" target="_blank" rel="noopener">Dunlosky et al. 2013, <em>Psychological Science in the Public Interest</em></a>, via Grad-IQ web research.</p>
+  </div>
+  <div id="gq-toolbar"></div>
+
+  <section class="card lav" aria-labelledby="today-h">
+    <div class="card-head"><h2 id="today-h">Today</h2><span class="pill" id="todaydate"></span></div>
+    <div id="today"></div>
+  </section>
+
+  <div class="grid two">
+    <section class="card" aria-labelledby="add-h">
+      <h2 id="add-h">Add a topic</h2>
+      <form onsubmit="return false" class="no-print">
+        <label class="field">Topic<input type="text" id="t-name" placeholder="e.g. Bayesian priors, Ch. 3 readings"></label>
+        <div class="field-row">
+          <label class="field">Course / project<input type="text" id="t-course" placeholder="Optional"></label>
+          <label class="field">First studied<input type="date" id="t-date"></label>
+        </div>
+        <button type="submit" class="btn primary" data-action="addTopic">Add &amp; schedule reviews</button>
+      </form>
+      <label class="field" style="margin-top:1rem">Review intervals (days after first study)<span class="hint">Comma-separated. Applies to new topics.</span><input type="text" data-bind="intervals" id="intervals"></label>
+    </section>
+    <section class="card" aria-labelledby="up-h">
+      <h2 id="up-h">Next 14 days</h2>
+      <div id="upcoming"></div>
+    </section>
+  </div>
+
+  <section class="card" aria-labelledby="topics-h">
+    <h2 id="topics-h">Topics &amp; schedules</h2>
+    <div class="rows" id="topics"></div>
+  </section>
+
+  <section class="card" aria-labelledby="quiz-h">
+    <h2 id="quiz-h">Self-quiz (active recall) log</h2>
+    <p class="small muted">Close your notes, answer from memory, then check. Rate how confident you felt.</p>
+    <form onsubmit="return false" class="no-print">
+      <div class="field-row">
+        <label class="field">Topic<select id="q-topic"></select></label>
+        <label class="field">Date<input type="date" id="q-date"></label>
+        <label class="field">Questions tried<input type="number" min="0" id="q-n" placeholder="e.g. 10"></label>
+        <label class="field">Got right<input type="number" min="0" id="q-ok" placeholder="e.g. 7"></label>
+      </div>
+      <fieldset class="field" style="border:0;padding:0;margin:0 0 .8rem"><legend>Confidence (1 = shaky, 5 = solid)</legend>
+        <div class="btn-row" id="q-conf" role="radiogroup">
+          <label class="check"><input type="radio" name="conf" value="1">1</label><label class="check"><input type="radio" name="conf" value="2">2</label><label class="check"><input type="radio" name="conf" value="3" checked>3</label><label class="check"><input type="radio" name="conf" value="4">4</label><label class="check"><input type="radio" name="conf" value="5">5</label>
+        </div></fieldset>
+      <label class="field">What I missed / next time<input type="text" id="q-note"></label>
+      <button type="submit" class="btn primary" data-action="addQuiz">Log quiz</button>
+    </form>
+    <div class="table-scroll" style="margin-top:1rem"><table class="data" id="quizzes"></table></div>
+  </section>
+</main>
+<script src="../config.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

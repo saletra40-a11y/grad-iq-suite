@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grad Admissions Tracker · Grad-IQ</title>
+<meta name="description" content="Track grad programs, deadlines, statement of purpose status, letters of recommendation and GPA notes, sortable by deadline.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/gradiq.css">
+</head>
+<body data-root=".." >
+<main id="main" class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Study &amp; time · Tool 10</p>
+    <h1>Grad admissions tracker</h1>
+    <p class="lede">Every program, deadline, statement of purpose and recommendation letter in one place. Sort by deadline so nothing sneaks up on you.</p>
+  </div>
+  <div id="gq-toolbar"></div>
+
+  <section class="card" aria-labelledby="sum-h">
+    <div class="card-head"><h2 id="sum-h">Programs at a glance</h2><button type="button" class="btn sm primary no-print" data-action="add">+ Add program</button></div>
+    <div class="stat-grid" id="stats" style="margin-bottom:1rem"></div>
+    <div class="table-scroll"><table class="data" id="table"></table></div>
+  </section>
+
+  <section aria-labelledby="det-h">
+    <h2 id="det-h">Program details</h2>
+    <div id="programs"></div>
+  </section>
+
+  <section class="card soft" aria-labelledby="tips-h">
+    <h2 id="tips-h">Letters of recommendation: what others suggest</h2>
+    <p>If a recommender says they "don't have the bandwidth," treat it as a soft no. Ask directly whether they can write a <em>strong</em> letter, give them a packet of materials, and line up a backup recommender. <span class="source">(Web-search summary of <a href="https://www.reddit.com/r/gradadmissions/comments/1oibrgy/i_feel_lost_my_prof_i_worked_with_for_a_year_and/" target="_blank" rel="noopener">an r/gradadmissions thread</a>; not checked against its comments.)</span></p>
+    <p>There's no GPA formula. Programs weigh the whole profile, with research fit and letters weighted heavily, and a weak GPA can be offset by strong recent grades, research experience and letters that address it. <span class="source">(Accepted answer, <a href="https://academia.stackexchange.com/questions/38237" target="_blank" rel="noopener">Academia SE Q38237</a>.)</span></p>
+  </section>
+</main>
+<script src="../config.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

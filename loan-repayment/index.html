@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Loan Repayment Plan Tracker · Grad-IQ</title>
+<meta name="description" content="A step-by-step SAVE to IBR / RAP transition checklist with your own deadlines, notes and status for each step.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/gradiq.css">
+</head>
+<body data-root=".." >
+<main id="main" class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Budget &amp; money · Tool 4</p>
+    <h1>Loan repayment plan tracker</h1>
+    <p class="lede">SAVE is ending. Work through the switch to a new plan (IBR, RAP or another option) one step at a time, with your own deadlines and notes.</p>
+  </div>
+  <div class="notice warn" role="note"><p><strong>Rules as of 2026 — confirm with your servicer or <a href="https://studentaid.gov" target="_blank" rel="noopener">StudentAid.gov</a>.</strong> Plan details below are from the <a href="https://www.ets.org/grad-school-journey/student-loan-changes-2026.html" target="_blank" rel="noopener">ETS summary of the 2026 loan changes</a>. Grad-IQ doesn't know your personal deadlines, so date fields start blank — copy them from your servicer's notice.</p></div>
+  <div id="gq-toolbar"></div>
+
+  <section class="card lav" aria-labelledby="facts-h">
+    <h2 id="facts-h">What's changing</h2>
+    <ul>
+      <li>SAVE borrowers are being given <strong>90 days to choose a new plan</strong> (RAP, IBR, ICR, or Standard / Tiered Standard). If you don't choose, you're auto-enrolled in Standard or Tiered Standard.</li>
+      <li>Loans disbursed after <strong>July 1, 2026</strong> can only use RAP or Tiered Standard.</li>
+      <li>RAP payments are 1–10% of AGI, with a $10 minimum and forgiveness after 30 years. RAP payments count toward PSLF.</li>
+    </ul>
+    <p class="source">Source: web research file (ETS summary). Reddit's r/StudentLoans advice [search summary, unverified]: watch for your servicer's 90-day notice and choose a plan before you're auto-placed.</p>
+  </section>
+
+  <section class="card" aria-labelledby="notice-h">
+    <h2 id="notice-h">Your 90-day window</h2>
+    <div class="field-row">
+      <label class="field">Date on my servicer's notice<input type="date" data-bind="noticeDate"></label>
+      <label class="field">My servicer<input type="text" data-bind="servicer" placeholder="Servicer name"></label>
+    </div>
+    <div id="window"></div>
+  </section>
+
+  <section class="card" aria-labelledby="steps-h">
+    <div class="card-head"><h2 id="steps-h">Checklist</h2><span class="pill lav" id="progress"></span></div>
+    <div class="rows" id="steps"></div>
+    <button type="button" class="btn sm no-print" data-action="addStep" style="margin-top:.8rem">+ Add my own step</button>
+  </section>
+
+  <section class="card" aria-labelledby="loans-h">
+    <div class="card-head"><h2 id="loans-h">My loans (optional)</h2><button type="button" class="btn sm no-print" data-action="addLoan">+ Add loan</button></div>
+    <div class="rows" id="loans"></div>
+  </section>
+</main>
+<script src="../config.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

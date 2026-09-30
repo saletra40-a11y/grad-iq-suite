@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stipend Tax Worksheet · Grad-IQ</title>
+<meta name="description" content="Estimate the taxable part of a grad stipend or fellowship (per IRS Publication 970) and plan a monthly tax set-aside.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/gradiq.css">
+</head>
+<body data-root=".." >
+<main id="main" class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Budget &amp; money · Tool 2</p>
+    <h1>Stipend tax worksheet</h1>
+    <p class="lede">"Are PhD stipends taxed?" is one of the most common grad-funding questions. Estimate the taxable part of your stipend and set money aside each month so tax time isn't a shock.</p>
+  </div>
+  <div class="notice warn big" role="note">
+    <p><strong>Not tax advice.</strong> This is a rough planning estimate. Check <a href="https://www.irs.gov/publications/p970" target="_blank" rel="noopener">IRS Publication 970 (Tax Benefits for Education)</a> or a tax professional before you file or make estimated payments.</p>
+  </div>
+  <div id="gq-toolbar"></div>
+
+  <section class="card lav" aria-labelledby="rule-h">
+    <h2 id="rule-h">The rule, in plain words</h2>
+    <p>Per IRS Pub 970, scholarship, fellowship and stipend money is <strong>taxable income, except the part you spend on qualified education expenses</strong>: tuition and required fees, plus books, supplies and equipment your courses require. Pay for teaching or research work (TA/RA wages) is always taxable.</p>
+    <p class="source">Source: <a href="https://www.irs.gov/publications/p970" target="_blank" rel="noopener">IRS Publication 970</a>, as summarized in Grad-IQ's web research (Sep 30, 2026).</p>
+  </section>
+
+  <section class="card" aria-labelledby="in-h">
+    <h2 id="in-h">Your numbers for the tax year</h2>
+    <div class="field-row">
+      <label class="field">Tax year<input type="number" min="2020" max="2100" data-bind="year"></label>
+      <label class="field">Stipend / fellowship received this year<span class="money"><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0" data-bind="stipend"></span></label>
+    </div>
+    <div class="field-row">
+      <label class="field">Tuition + required fees you paid<span class="hint">Count only amounts you actually paid.</span><span class="money"><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0" data-bind="tuitionFees"></span></label>
+      <label class="field">Other qualified expenses<span class="hint">Books, supplies, equipment your courses require.</span><span class="money"><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0" data-bind="otherQualified"></span></label>
+    </div>
+    <div class="field-row">
+      <label class="field">TA / RA wages (optional)<span class="hint">Pay for teaching or research work is always taxable (Pub 970).</span><span class="money"><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0" data-bind="wages"></span></label>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="out-h">
+    <h2 id="out-h">Estimated taxable amount</h2>
+    <div class="stat-grid" id="stats"></div>
+    <p class="small muted" id="explain" style="margin-top:.8rem"></p>
+  </section>
+
+  <section class="card mint" aria-labelledby="set-h">
+    <h2 id="set-h">Your tax set-aside</h2>
+    <p class="small">You choose the percentage. Grad-IQ doesn't suggest a rate because it depends on your whole tax situation. Check Pub 970 or a tax pro, and look at what you owed last year.</p>
+    <div class="field-row">
+      <label class="field">Set-aside % of taxable stipend<input type="number" inputmode="decimal" min="0" max="100" step="0.5" placeholder="Your choice, e.g. from a tax pro" data-bind="pct"></label>
+      <label class="field">Months you'll set money aside<input type="number" min="1" max="12" data-bind="months"></label>
+    </div>
+    <div class="stat-grid" id="setaside"></div>
+    <p class="small no-print" style="margin-top:.8rem">Put the monthly amount on the "Tax set-aside" line of your <a href="../stipend-budget/">stipend budget</a>.</p>
+  </section>
+
+  <section class="card soft" aria-labelledby="n-h">
+    <h2 id="n-h">Notes &amp; questions for a tax pro</h2>
+    <label class="field"><span class="sr-only">Notes</span><textarea data-bind="notes" placeholder="Questions to ask a tax pro, forms I received, whether I need estimated payments…"></textarea></label>
+  </section>
+</main>
+<script src="../config.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

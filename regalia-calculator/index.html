@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Doctoral Regalia Cost Calculator: Rent vs Buy New vs Buy Used · Grad-IQ</title>
+<meta name="description" content="Compare the cost of renting, buying new or buying once-used doctoral regalia, and see what to do with your gown afterward.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/gradiq.css">
+</head>
+<body data-root=".." >
+<main id="main" class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Regalia · Tool 13</p>
+    <h1>Regalia cost calculator: rent vs buy new vs buy used</h1>
+    <p class="lede">"Why is doctoral regalia so expensive?" is a real search people type. Put your actual quotes side by side and pick what fits your plans.</p>
+  </div>
+  <div id="gq-toolbar"></div>
+
+  <section class="card" aria-labelledby="in-h">
+    <h2 id="in-h">Prices</h2>
+    <h3>Buy new</h3>
+    <div class="field-row">
+      <label class="field">New doctoral package, low<span class="money"><input type="number" inputmode="decimal" min="0" step="0.01" data-bind="newLow"></span></label>
+      <label class="field">New doctoral package, high<span class="money"><input type="number" inputmode="decimal" min="0" step="0.01" data-bind="newHigh"></span></label>
+    </div>
+    <p class="source" style="margin-top:-.3rem">Default: Herff Jones doctoral package (gown, hood, tam, tassel) <strong>$722–$753</strong>, or $902.50–$941.00 bought separately. Prices valid 8/1/26–12/31/26 per the <a href="https://universityevents.siu.edu/_common/documents/sale-fall-2026-doctor-package.pdf" target="_blank" rel="noopener">SIU fall 2026 order form</a> (Grad-IQ web research, Sep 30, 2026). Your school's price may differ, so replace these with your own quote.</p>
+    <h3 style="margin-top:1rem">Rent</h3>
+    <div class="field-row">
+      <label class="field">Rental price (per ceremony)<span class="hint">Enter your school's rental quote.</span><span class="money"><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="enter price" data-bind="rental" data-price></span></label>
+    </div>
+    <h3 style="margin-top:.4rem">Buy once-used from Grad-IQ</h3>
+    <div class="field-row">
+      <label class="field">Grad-IQ used full set, low<span class="hint">Grad-IQ's current sale price range. Editable.</span><span class="money"><input type="number" inputmode="decimal" min="0" step="0.01" data-bind="usedLow"></span></label>
+      <label class="field">Grad-IQ used full set, high<span class="money"><input type="number" inputmode="decimal" min="0" step="0.01" data-bind="usedHigh"></span></label>
+      <label class="field">Shipping / cleaning / alterations (optional)<span class="money"><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0" data-bind="extras"></span></label>
+    </div>
+    <h3 style="margin-top:.4rem">Your plans</h3>
+    <div class="field-row">
+      <label class="field">Ceremonies you expect to wear it to<span class="hint">Your own commencement is 1. Faculty often attend more.</span><input type="number" min="1" max="60" data-bind="wears"></label>
+    </div>
+    <label class="check"><input type="checkbox" data-bind="sellBack"> <span>I'll sell it back to Grad-IQ afterward for the <strong id="bb-inline"></strong> buyback (applies to the buy-new and buy-used totals)</span></label>
+  </section>
+
+  <section class="card" aria-labelledby="cmp-h">
+    <h2 id="cmp-h">Cost comparison</h2>
+    <div id="compare"></div>
+  </section>
+
+  <section class="card lav" aria-labelledby="after-h">
+    <h2 id="after-h">What to do with your gown afterward</h2>
+    <p>People search "can you keep your graduation cap and gown" and "what to do with graduation cap and gown." A few good options:</p>
+    <ul>
+      <li><strong>Keep it</strong> if you'll attend ceremonies as faculty. On Academia Stack Exchange's <a href="https://academia.stackexchange.com/questions/44326" target="_blank" rel="noopener">"Should I buy my PhD cap and gown?"</a>, the top answer's author rented at first and later regretted not owning one.</li>
+      <li><strong>Display or preserve it</strong>: hang it in a garment bag, or frame the hood.</li>
+      <li><strong>Pass it on</strong> to a new grad by selling it.</li>
+    </ul>
+    <div class="card" style="margin:1rem 0 0" id="sell"></div>
+  </section>
+
+  <section class="card soft" aria-labelledby="src-h">
+    <h2 id="src-h">From the research</h2>
+    <p class="small">Web research found students often rent for their own ceremony and buy later, often generic or used, once they have a faculty job. That comes from search summaries of Reddit threads like <a href="https://www.reddit.com/r/AskAcademia/comments/1tu8tlq/buy_or_rent_doctoral_regalia_when_graduating/" target="_blank" rel="noopener">"Buy or rent doctoral regalia when graduating?"</a> and <a href="https://www.reddit.com/r/PhD/comments/1sgw1i2/graduation_robe_prices_are_ridiculous/" target="_blank" rel="noopener">"Graduation robe prices are ridiculous"</a>, and wasn't checked against their comments.</p>
+    <p class="small no-print">Defending soon? Try the <a href="../defense-countdown/">defense countdown</a>.</p>
+  </section>
+</main>
+<script src="../config.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

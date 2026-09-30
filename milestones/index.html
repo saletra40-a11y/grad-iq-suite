@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Grad Milestones Planner · Grad-IQ</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <style>@font-face{font-family:"DM Sans";src:url("../assets/fonts/dmsans.woff2") format("woff2");font-weight:400 700;font-display:swap}@font-face{font-family:"DM Sans";src:url("../assets/fonts/dmsans-italic.woff2") format("woff2");font-style:italic;font-weight:400;font-display:swap}@font-face{font-family:"Fraunces";src:url("../assets/fonts/fraunces.woff2") format("woff2");font-weight:500 700;font-display:swap}</style>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <!-- Demo splash (shown briefly when ?demo=1 first lands) -->
+    <section id="demo-splash" class="demo-splash hidden" aria-label="Start demo">
+      <div class="flow-card welcome-card">
+        <p class="eyebrow">Phone-ready demo</p>
+        <h1>See a filled<br />Ph.D. plan.</h1>
+        <p class="lede">
+          Sample dissertation-phase data ~15 months from defense—milestones, weekly rhythm,
+          lit matrix, advisor notes, and tips. Tap through a short tour.
+        </p>
+        <div class="welcome-actions">
+          <button type="button" class="btn primary lg" id="btn-start-demo">Start demo</button>
+          <button type="button" class="btn ghost" id="btn-skip-demo-tour">Open without tour</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo mode banner -->
+    <div id="demo-banner" class="demo-banner hidden" role="status">
+      <strong>Demo mode</strong>
+      <span>Sample Ph.D. dissertation plan</span>
+      <div class="demo-actions">
+        <button type="button" class="btn" id="btn-demo-tour">Tour</button>
+        <button type="button" class="btn" id="btn-reset-demo">Reset demo</button>
+      </div>
+    </div>
+
+    <!-- Mobile bottom nav -->
+    <nav id="bottom-nav" class="bottom-nav" aria-label="Mobile views" hidden>
+      <button type="button" data-view="milestones" class="active"><span class="bn-icon" aria-hidden="true">🗺️</span>Map</button>
+      <button type="button" data-view="week"><span class="bn-icon" aria-hidden="true">📅</span>Week</button>
+      <button type="button" data-view="lit"><span class="bn-icon" aria-hidden="true">📚</span>Lit</button>
+      <button type="button" data-view="advisor"><span class="bn-icon" aria-hidden="true">🗣️</span>Advisor</button>
+      <button type="button" data-view="tips"><span class="bn-icon" aria-hidden="true">💡</span>Tips</button>
+    </nav>
+
+    <!-- Coach-mark tour overlay -->
+    <div id="tour-overlay" class="tour-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="tour-title">
+      <div class="tour-dim" id="tour-dim"></div>
+      <div class="tour-spotlight" id="tour-spotlight" hidden></div>
+      <div class="tour-card" id="tour-card">
+        <p class="tour-step" id="tour-step-label">1 of 5</p>
+        <h3 id="tour-title">Title</h3>
+        <p id="tour-body">Body</p>
+        <div class="tour-nav">
+          <div class="tour-dots" id="tour-dots" aria-hidden="true"></div>
+          <button type="button" class="tour-skip" id="btn-tour-skip">Skip</button>
+          <button type="button" class="btn primary sm" id="btn-tour-next">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="app">
+    <!-- Welcome / guided setup -->
+    <section id="welcome" class="screen" aria-label="Welcome">
+      <div class="flow-card welcome-card">
+        <p class="eyebrow">Grad-IQ · Tool 14</p>
+        <h1>Milestones,<br />not mayhem.</h1>
+        <p class="lede">
+          A calm planner for Master’s and Ph.D. work—map the long arc, protect writing time,
+          and keep buffers before every hard deadline.
+        </p>
+
+        <div class="degree-toggle" role="group" aria-label="Degree type">
+          <button type="button" class="degree-btn" data-degree="masters" id="deg-masters">
+            <span class="deg-icon" aria-hidden="true">📜</span>
+            <strong>Master’s</strong>
+            <span>Coursework + capstone/thesis · shorter cycle</span>
+          </button>
+          <button type="button" class="degree-btn selected" data-degree="phd" id="deg-phd">
+            <span class="deg-icon" aria-hidden="true">🔬</span>
+            <strong>Ph.D.</strong>
+            <span>Long research arc · sparse deadlines · write from day one</span>
+          </button>
+        </div>
+
+        <div class="setup-fields">
+          <label class="field">
+            <span>Target defense / graduation</span>
+            <input type="date" id="target-date" />
+          </label>
+          <label class="field">
+            <span>Program start <em>(optional)</em></span>
+            <input type="date" id="start-date" />
+          </label>
+        </div>
+        <p class="muted hint" id="setup-hint">We’ll work backward with committee-review buffers and suggest milestone dates you can edit.</p>
+
+        <div class="welcome-actions">
+          <button type="button" class="btn primary lg" id="btn-begin">Build my milestone map</button>
+          <button type="button" class="btn ghost" id="btn-skip-setup">Skip to planner</button>
+          <a class="link-quiet" href="../index.html">← All Grad-IQ tools</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guided setup steps (7 principles) -->
+    <section id="guided" class="screen hidden" aria-label="Guided setup">
+      <header class="flow-top">
+        <div class="brand">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <div>
+            <strong>Setup</strong>
+            <span class="brand-sub" id="guided-badge">Ph.D.</span>
+          </div>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span id="guided-step-label">Step 1 of 7</span>
+            <span id="guided-step-title">Milestone map</span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1" id="guided-progress">
+            <div class="progress-fill" id="guided-fill"></div>
+          </div>
+        </div>
+      </header>
+      <main class="flow-main">
+        <div class="flow-card step-card" id="guided-panel"></div>
+      </main>
+      <footer class="flow-nav">
+        <button type="button" class="btn ghost lg" id="btn-guided-back">Back</button>
+        <button type="button" class="btn primary lg" id="btn-guided-next">Next</button>
+      </footer>
+    </section>
+
+    <!-- Main planner -->
+    <section id="main" class="screen hidden" aria-label="Grad milestones planner">
+      <header class="topbar">
+        <div class="brand">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <div>
+            <strong>Grad-IQ</strong>
+            <span class="brand-sub" id="degree-badge" data-tour="degree">Ph.D.</span>
+          </div>
+        </div>
+        <nav class="nav-tabs" role="tablist" data-tour="tabs" aria-label="Main views">
+          <button type="button" class="nav-tab active" data-view="milestones" role="tab" aria-selected="true">Milestones</button>
+          <button type="button" class="nav-tab" data-view="week" role="tab" aria-selected="false">Week</button>
+          <button type="button" class="nav-tab" data-view="lit" role="tab" aria-selected="false">Lit</button>
+          <button type="button" class="nav-tab" data-view="advisor" role="tab" aria-selected="false">Advisor</button>
+          <button type="button" class="nav-tab" data-view="tips" role="tab" aria-selected="false">Tips</button>
+        </nav>
+        <div class="top-actions">
+          <button type="button" class="btn ghost sm" id="btn-print" title="Print">Print</button>
+          <button type="button" class="btn ghost sm" id="btn-settings" title="Settings">Setup</button>
+        </div>
+      </header>
+
+      <main class="main-body">
+        <!-- Milestones view -->
+        <div id="view-milestones" class="view active" data-tour="milestones" role="tabpanel">
+          <div class="view-header">
+            <div>
+              <p class="eyebrow">Your arc</p>
+              <h2>Milestone map</h2>
+              <p class="muted" id="timeline-summary">Working toward defense — edit dates anytime.</p>
+            </div>
+            <div class="progress-ring-wrap" aria-label="Overall progress">
+              <svg class="progress-ring" viewBox="0 0 72 72" width="72" height="72">
+                <circle class="ring-bg" cx="36" cy="36" r="30" />
+                <circle class="ring-fg" id="progress-ring" cx="36" cy="36" r="30" />
+              </svg>
+              <span class="ring-label" id="progress-pct">0%</span>
+            </div>
+          </div>
+
+          <div class="gantt-legend">
+            <span class="leg"><i class="dot blush"></i> Coursework</span>
+            <span class="leg"><i class="dot lavender"></i> Gates</span>
+            <span class="leg"><i class="dot mint"></i> Research</span>
+            <span class="leg"><i class="dot sky"></i> Writing / defense</span>
+          </div>
+
+          <div class="gantt" id="gantt" aria-label="Timeline" data-tour="gantt"></div>
+
+          <div class="milestone-list" id="milestone-list" data-tour="ms-list"></div>
+        </div>
+
+        <!-- Weekly planner -->
+        <div id="view-week" class="view" data-tour="week" role="tabpanel" hidden>
+          <div class="view-header">
+            <div>
+              <p class="eyebrow">Rhythm</p>
+              <h2>Weekly template</h2>
+              <p class="muted">Dissertation-phase default — separate <strong>making</strong> from <strong>managing</strong>. Edit freely.</p>
+            </div>
+            <button type="button" class="btn secondary sm" id="btn-reset-week">Reset to sample</button>
+          </div>
+          <div class="mits-bar" data-tour="mits">
+            <h3>3 MITs this week</h3>
+            <div class="mits" id="mits">
+              <input type="text" placeholder="Most important #1" data-mit="0" />
+              <input type="text" placeholder="Most important #2" data-mit="1" />
+              <input type="text" placeholder="Most important #3" data-mit="2" />
+            </div>
+          </div>
+          <div class="week-grid" id="week-grid"></div>
+          <p class="science-chip">💡 Daily writing (30–90 min) beats binge weekends. Calendar research like a job.</p>
+        </div>
+
+        <!-- Lit matrix -->
+        <div id="view-lit" class="view" role="tabpanel" hidden>
+          <div class="view-header">
+            <div>
+              <p class="eyebrow">Living matrix</p>
+              <h2>Literature tracker</h2>
+              <p class="muted">Spaced retrieval &gt; highlighting. Capture claims, methods, gaps — then quiz yourself.</p>
+            </div>
+            <button type="button" class="btn primary sm" id="btn-add-lit">+ Add paper</button>
+          </div>
+          <div class="lit-table-wrap">
+            <table class="lit-table" id="lit-table">
+              <thead>
+                <tr>
+                  <th>Paper / author</th>
+                  <th>Methods</th>
+                  <th>Key findings</th>
+                  <th>Gaps / links</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="lit-body"></tbody>
+            </table>
+          </div>
+          <p class="science-chip">🧠 High utility: retrieve claims from memory before reopening the PDF. Low utility: reread &amp; highlight alone.</p>
+        </div>
+
+        <!-- Advisor OS -->
+        <div id="view-advisor" class="view" role="tabpanel" hidden>
+          <div class="view-header">
+            <div>
+              <p class="eyebrow">Operating system</p>
+              <h2>Advisor meetings</h2>
+              <p class="muted">Agenda in · notes out · next deliverables agreed in writing.</p>
+            </div>
+            <button type="button" class="btn primary sm" id="btn-add-meeting">+ Log meeting</button>
+          </div>
+          <div class="advisor-form card soft">
+            <label class="field">
+              <span>Cadence reminder</span>
+              <select id="advisor-cadence">
+                <option value="weekly">Weekly</option>
+                <option value="biweekly" selected>Every 2 weeks</option>
+                <option value="monthly">Monthly</option>
+                <option value="asneeded">As needed</option>
+              </select>
+            </label>
+            <p class="muted tip-inline">Radio silence? Send agenda + notes; request a standing cadence; loop in committee when stuck.</p>
+          </div>
+          <div class="meeting-list" id="meeting-list"></div>
+        </div>
+
+        <!-- Tips / failure modes -->
+        <div id="view-tips" class="view" data-tour="tips" role="tabpanel" hidden>
+          <div class="view-header">
+            <div>
+              <p class="eyebrow">Watch-outs</p>
+              <h2>Failure modes → fixes</h2>
+              <p class="muted">Gentle course-corrections drawn from common grad pitfalls.</p>
+            </div>
+          </div>
+          <div class="tips-grid" id="tips-grid"></div>
+          <div class="card soft science-panel">
+            <h3>Learning-science backbone</h3>
+            <ul class="clean-list">
+              <li><strong>Retrieval + spaced practice</strong> — high utility for quals, methods, seminal papers.</li>
+              <li><strong>Highlighting / rereading</strong> — low utility alone; pair with free-recall or questions.</li>
+              <li><strong>Write from day one</strong> — analysis → prose weekly; drafts as thinking, not last step.</li>
+              <li><strong>20–30% slack</strong> before hard deadlines for committee revision loops.</li>
+            </ul>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- Settings modal -->
+    <div id="settings-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+      <div class="modal-card">
+        <h2 id="settings-title">Setup &amp; preferences</h2>
+        <div class="degree-toggle compact">
+          <button type="button" class="degree-btn" data-degree="masters" id="set-masters">Master’s</button>
+          <button type="button" class="degree-btn" data-degree="phd" id="set-phd">Ph.D.</button>
+        </div>
+        <label class="field">
+          <span>Target defense / graduation</span>
+          <input type="date" id="set-target" />
+        </label>
+        <label class="field">
+          <span>Program start</span>
+          <input type="date" id="set-start" />
+        </label>
+        <div class="modal-actions">
+          <button type="button" class="btn primary" id="btn-resuggest">Recalculate dates</button>
+          <button type="button" class="btn ghost" id="btn-close-settings">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Milestone detail drawer -->
+    <div id="ms-drawer" class="drawer hidden" role="dialog" aria-modal="true">
+      <div class="drawer-card">
+        <button type="button" class="drawer-close" id="btn-close-drawer" aria-label="Close">×</button>
+        <p class="eyebrow" id="drawer-eyebrow">Milestone</p>
+        <h2 id="drawer-title">Title</h2>
+        <label class="field">
+          <span>Target date</span>
+          <input type="date" id="drawer-date" />
+        </label>
+        <label class="field check-row">
+          <input type="checkbox" id="drawer-skip" />
+          <span>Mark N/A / skip (e.g. no human subjects)</span>
+        </label>
+        <div class="checklist" id="drawer-checklist"></div>
+        <label class="field">
+          <span>Notes</span>
+          <textarea id="drawer-notes" rows="4" placeholder="Committee feedback, blockers, next actions…"></textarea>
+        </label>
+        <button type="button" class="btn primary" id="btn-save-drawer">Save</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Print / export surface -->
+  <div id="print-root" class="print-only" aria-hidden="true"></div>
+
+  <script src="../config.js"></script>
+  <script src="app.js"></script>
+  <script src="gradiq-shim.js"></script>
+</body>
+</html>

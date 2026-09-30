@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Advisor-Meeting Log · Grad-IQ</title>
+<meta name="description" content="Log advisor meetings, notes and agreed actions, and generate a follow-up email summarizing what you agreed.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/gradiq.css">
+</head>
+<body data-root=".." >
+<main id="main" class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Stress &amp; support · Tool 12</p>
+    <h1>Advisor-meeting log</h1>
+    <p class="lede">Write down what you discussed and agreed, then send a short follow-up email. It keeps you both on the same page.</p>
+    <div class="notice"><p><strong>It's also your written record.</strong> When advisor conflicts come up, the most common advice from grad students on Reddit is to keep a written record, win over committee members one by one, and if that fails, go to the department head, Director of Graduate Studies or ombudsperson. Dated notes and follow-up emails are that record.</p><p class="source">Source: comment consensus on <a href="https://www.reddit.com/r/GradSchool/comments/1o8cpql/my_advisor_wont_let_me_graduate_what_do_i_do/" target="_blank" rel="noopener">"My advisor won't let me graduate. What do I do?"</a> (r/GradSchool), via Grad-IQ Reddit research.</p></div>
+  </div>
+  <div id="gq-toolbar"></div>
+
+  <section class="card soft" aria-labelledby="who-h">
+    <h2 id="who-h">For your emails</h2>
+    <div class="field-row"><label class="field">Advisor's name (as you address them)<input type="text" data-bind="advisorName" placeholder="e.g. Dr. Rivera"></label><label class="field">Your name<input type="text" data-bind="myName"></label></div>
+  </section>
+
+  <div class="btn-row no-print" style="margin-bottom:1rem"><button type="button" class="btn primary" data-action="addMeeting">+ Log a meeting</button></div>
+  <div id="meetings"></div>
+  <section class="card" aria-labelledby="open-h"><h2 id="open-h">Open action items</h2><ul id="open" style="padding-left:1.1rem;margin:0"></ul></section>
+</main>
+<script src="../config.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

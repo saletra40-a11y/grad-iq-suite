@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Weekly Stress Check-In · Grad-IQ</title>
+<meta name="description" content="A gentle weekly stress check-in with simple 1 to 5 scales, a reflection prompt, a trend chart and a small-wins log.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/gradiq.css">
+</head>
+<body data-root="..">
+<main id="main" class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Stress &amp; support · Tool 11</p>
+    <h1>Weekly stress check-in</h1>
+    <p class="lede">Five quick scales, one reflection, and a place to notice what went right. You're not alone in this: in Nature's 2025 graduate survey, 30% of PhD students said they had received help for anxiety or depression linked to their studies, and 75% of those who used their institution's help found it helpful.</p>
+    <p class="source">Source: <a href="https://doi.org/10.6084/m9.figshare.30084739" target="_blank" rel="noopener">Nature Graduate Survey 2025 report deck</a> (n=3,785), via Grad-IQ web research.</p>
+  </div>
+  <div id="gq-toolbar"></div>
+
+  <section class="card" aria-labelledby="ci-h">
+    <h2 id="ci-h">This week's check-in</h2>
+    <form onsubmit="return false">
+      <label class="field">Week of<input type="date" id="c-week"></label>
+      <div id="scales"></div>
+      <label class="field">Reflection<span class="hint" id="prompt"></span><textarea id="c-reflect"></textarea></label>
+      <button type="submit" class="btn primary no-print" data-action="save">Save check-in</button>
+      <span class="small muted" id="c-mode"></span>
+    </form>
+  </section>
+
+  <section class="card" aria-labelledby="tr-h">
+    <h2 id="tr-h">Your trend</h2>
+    <div class="chart" id="chart"></div>
+    <div class="legend" id="legend" style="margin-top:.5rem"></div>
+    <div class="table-scroll" style="margin-top:1rem"><table class="data" id="entries"></table></div>
+  </section>
+
+  <section class="card mint" aria-labelledby="w-h">
+    <h2 id="w-h">Small wins</h2>
+    <p class="small">Research is mostly slow progress, so write down the small stuff: an email sent, a paragraph written, a walk taken. It adds up.</p>
+    <form class="row-line no-print" style="--cols: 1fr 3fr auto" onsubmit="return false"><label class="field">Date<input type="date" id="w-date"></label><label class="field">Win<input type="text" id="w-text" placeholder="e.g. Finally emailed my advisor about the timeline"></label><button type="submit" class="btn primary" data-action="addWin">Add win</button></form>
+    <ul id="wins" style="margin:.8rem 0 0;padding-left:1.1rem"></ul>
+  </section>
+</main>
+<script src="../config.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
